@@ -7,9 +7,9 @@ load_dotenv()
 
 app = Flask(__name__)
 MONGO_URI = os.getenv("MONGO_URI")
-# add comment in new branch
+
 if not MONGO_URI:
-    print("MONGO_URI is not set in ENV.")
+    raise RuntimeError("FATAL ERROR: MONGO_URI is not set in the environment variables.")
 
 try:
     client = MongoClient(MONGO_URI)
@@ -39,7 +39,7 @@ def index():
 def success():
     return render_template('success.html')
     
-@app.route('/todo', methods=['GET', 'POST'])
+@app.route('/submittodoitem', methods=['GET', 'POST'])
 def todo():
     message = None
     if request.method == 'POST':
