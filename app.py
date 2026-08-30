@@ -46,10 +46,12 @@ def todo():
         item_name = request.form.get('item_name')
         item_description = request.form.get('item_description')
         item_id = request.form.get('item_id')
+        item_UUID = request.form.get('item_UUID')
+        item_hash = request.form.get('item_hash')
         if item_name and item_description:
             try:
                 # Save the to-do item to MongoDB
-                db['todos'].insert_one({"item_name": item_name, "item_description": item_description,"item_id":item_id})
+                db['todos'].insert_one({"item_name": item_name, "item_description": item_description,"item_id":item_id,"item_UUID":item_UUID,"item_hash":item_hash})
                 message = "To-Do item added successfully!"
             except Exception as e:
                 message = f"Error adding item: {str(e)}"
