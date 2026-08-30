@@ -7,7 +7,7 @@ load_dotenv()
 
 app = Flask(__name__)
 MONGO_URI = os.getenv("MONGO_URI")
-
+//
 if not MONGO_URI:
     print("MONGO_URI is not set in ENV.")
 
